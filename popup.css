@@ -1,0 +1,73 @@
+body {
+  width: 420px;
+  height: 720px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.frame {
+  min-height: 720px;
+  padding: 0;
+}
+
+.phone {
+  width: 420px;
+  height: 720px;
+  max-width: none;
+  border-radius: 0;
+}
+
+.screen {
+  height: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 0;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  max-width: 430px;
+  margin: 0 auto;
+  overflow-y: hidden;
+}
+
+.frame {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.phone {
+  width: 100%;
+  max-width: 430px;
+  height: 100vh;
+  min-height: 0;
+}
+
+.microphone-permission-banner {
+  display: grid;
+  gap: 10px;
+  margin: 0 14px 12px;
+  padding: 12px;
+  border: 1px solid #f59e0b;
+  border-radius: 16px;
+  background: #fffbeb;
+  color: #92400e;
+}
+
+.microphone-permission-banner[hidden] {
+  display: none;
+}
+
+.microphone-permission-banner strong,
+.microphone-permission-banner span {
+  display: block;
+}
+
+.microphone-permission-banner span {
+  margin-top: 3px;
+  font-size: 12px;
+}

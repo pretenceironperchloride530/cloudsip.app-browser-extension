@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudSIP Microphone Permission</title>
+  <style>
+    :root { color-scheme: light; font-family: Arial, sans-serif; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #f7f8fb; color: #172033; }
+    main { width: min(340px, calc(100vw - 40px)); padding: 24px; border-radius: 18px; background: #fff; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14); }
+    h1 { margin: 0 0 12px; font-size: 24px; }
+    p { margin: 0 0 20px; line-height: 1.45; color: #4b5563; }
+    button { width: 100%; border: 0; border-radius: 12px; padding: 12px 16px; background: #2563eb; color: #fff; font-weight: 700; cursor: pointer; }
+    button:disabled { cursor: wait; opacity: 0.7; }
+    #permissionError { min-height: 20px; margin-top: 12px; color: #b91c1c; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>CloudSIP</h1>
+    <p>CloudSIP needs microphone access to register SIP and place calls.</p>
+    <button id="grantMicBtn" type="button">Allow Microphone</button>
+    <div id="permissionError" role="alert" aria-live="polite"></div>
+  </main>
+  <script src="permission.js"></script>
+</body>
+</html>
