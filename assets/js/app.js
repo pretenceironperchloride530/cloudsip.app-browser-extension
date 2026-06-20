@@ -1,5 +1,5 @@
 import { showView } from './ui.js';
-import { answerIncomingCall, handleCallAccepted, handleCallEnded, handleCallFailed, handleCallHold, handleCallMuted, handleCallUnhold, handleCallUnmuted, handleIncomingCall, hangupActiveCall, rejectIncomingCall, startCall, startTimers, toggleHoldCall, toggleMuteCall } from './call-manager.js';
+import { answerIncomingCall, applyCallBehaviorSettings, handleCallAccepted, handleCallEnded, handleCallFailed, handleCallHold, handleCallMuted, handleCallUnhold, handleCallUnmuted, handleIncomingCall, hangupActiveCall, rejectIncomingCall, startCall, startTimers, toggleHoldCall, toggleMuteCall } from './call-manager.js';
 import { initDialpad, updateDialModeUI } from './dialpad.js';
 import * as contactsModule from './contacts.js?v=20260617';
 import { renderLogs } from './call-logs.js';
@@ -106,6 +106,17 @@ function buildSipConfig(settings){
     autoAnswer: settings.autoAnswer,
     autoHoldOnSwitch: settings.autoHoldOnSwitch
   };
+}
+
+
+function sipConfigsMatch(firstConfig, secondConfig){
+  if (!firstConfig || !secondConfig) return false;
+
+  return firstConfig.websocketUrl === secondConfig.websocketUrl
+    && firstConfig.sipUri === secondConfig.sipUri
+    && firstConfig.password === secondConfig.password
+    && firstConfig.displayName === secondConfig.displayName
+    && firstConfig.extension === secondConfig.extension;
 }
 
 function updateHeaderFromSettings(settings){
@@ -235,11 +246,24 @@ async function boot(){
   const settings = getSettings();
   updateTodayDate();
   updateHeaderFromSettings(settings);
-  window.addEventListener('settings:changed', (event) => updateHeaderFromSettings(event.detail?.settings || getSettings()));
+  let activeSipConfig = buildSipConfig(settings);
+  let sipStarted = false;
+  window.addEventListener('settings:changed', async (event) => {
+    const nextSettings = event.detail?.settings || getSettings();
+    updateHeaderFromSettings(nextSettings);
+    applyCallBehaviorSettings(nextSettings);
+
+    const nextSipConfig = buildSipConfig(nextSettings);
+    if (sipConfigsMatch(activeSipConfig, nextSipConfig)) return;
+
+    activeSipConfig = nextSipConfig;
+    if (sipStarted) {
+      await initSipClient(activeSipConfig, getSipHandlers());
+    }
+  });
   await initAudioDevices();
   initSoundManager();
 
-  let sipStarted = false;
   const startSipWhenAllowed = async () => {
     if (sipStarted) {
       await registerSip();
@@ -247,7 +271,7 @@ async function boot(){
     }
 
     sipStarted = true;
-    await initSipClient(buildSipConfig(getSettings()), getSipHandlers());
+    await initSipClient(activeSipConfig, getSipHandlers());
   };
 
   bindMicrophonePermissionButton(startSipWhenAllowed);
